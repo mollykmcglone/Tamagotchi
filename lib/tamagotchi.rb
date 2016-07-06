@@ -1,6 +1,6 @@
 class Tamagotchi
   @@last_active = nil
-  @@my_pet = 
+  @@my_pets = []
 
   define_method(:initialize) do |name|
     @name = name
@@ -25,8 +25,16 @@ class Tamagotchi
     @activity_level
   end
 
+  define_singletone_method(:all) do
+    @@my_pets
+  end
+
+  define_singleton_method(:clear) do
+    @@my_pets = []
+  end
+
   define_method(:save) do
-    @@my_pet = self
+    @@my_pets.unshift(self)
   end
 
   define_method(:is_alive?) do
@@ -70,13 +78,9 @@ class Tamagotchi
     (now - @@last_active)/60
   end
 
-  define_method(:time_passes) do
-    # now = Time.now
-    # seconds = 60
-    # later = (now.+seconds)
-    # if now = later
-      self.set_food_level()
-      self.set_activity_level()
-      self.set_sleep_level()
+  define_method(:time_passes) do |minutes|
+      @food_level -= (1 * minutes)
+      @activity_level -= (2 * minutes)
+      @sleep_level -= (3 * minutes)
   end
 end
