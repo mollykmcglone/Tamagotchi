@@ -25,7 +25,7 @@ class Tamagotchi
     @activity_level
   end
 
-  define_singletone_method(:all) do
+  define_singleton_method(:all) do
     @@my_pets
   end
 
