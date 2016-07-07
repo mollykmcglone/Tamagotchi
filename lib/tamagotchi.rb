@@ -45,23 +45,15 @@ class Tamagotchi
     end
   end
 
-  define_method(:set_food_level) do
-    @food_level -= 1
-  end
-
-  define_method(:set_activity_level) do
-    @activity_level -= 1
-  end
-
-  define_method(:set_sleep_level) do
-    @sleep_level -= 1
+  define_method(:dead) do
+    return "DEAD!"
   end
 
   define_method(:feed) do
     @food_level += 2
   end
 
-  define_method(:activity) do
+  define_method(:play) do
     @activity_level += 2
   end
 

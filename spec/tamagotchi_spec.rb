@@ -3,7 +3,7 @@ require('tamagotchi')
 
 describe(Tamagotchi) do
   describe("#initialize") do
-    it("name the new Tamagotchi and set the initial life levels") do
+    it("names the new Tamagotchi and set the initial life levels") do
       my_pet = Tamagotchi.new("sparky")
       expect(my_pet.name()).to(eq("sparky"))
       expect(my_pet.food_level()).to(eq(10))
@@ -19,7 +19,7 @@ describe(Tamagotchi) do
     end
     it("is dead if the food level is 0") do
       my_pet = Tamagotchi.new("sparky")
-      my_pet.set_food_level()
+      my_pet.time_passes(10)
       expect(my_pet.is_alive?()).to(eq(false))
     end
   end
@@ -32,10 +32,10 @@ describe(Tamagotchi) do
     end
   end
 
-  describe("#activity") do
+  describe("#play") do
     it("increases activity level by 2") do
       my_pet = Tamagotchi.new("sparky")
-      my_pet.activity()
+      my_pet.play()
       expect(my_pet.activity_level()).to(eq(12))
     end
   end
